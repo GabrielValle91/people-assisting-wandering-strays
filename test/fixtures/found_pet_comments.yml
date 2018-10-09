@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  found_pet: one
+  comment: MyString
+
+two:
+  user: two
+  found_pet: two
+  comment: MyString

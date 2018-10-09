@@ -1,0 +1,2 @@
+class FoundPetCommentsController < ApplicationController
+end
