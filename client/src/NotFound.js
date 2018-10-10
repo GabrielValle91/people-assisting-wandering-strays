@@ -6,7 +6,7 @@ class NotFound extends Component {
   render() {
     return <Container text textAlign='center'>
       <h1>404: Not found</h1>
-      <Button as={Link} to='/'>Back to home</Button>
+      {/* <Button as={Link} to='/'>Back to home</Button> */}
     </Container>
   }
 }

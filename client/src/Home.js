@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import FoundPetContainer from './containers/FoundPetContainer'
-
 class Home extends Component {
   render(){
-    return <FoundPetContainer />
+    return (<div>Home Page</div>)
   }
 }
 
