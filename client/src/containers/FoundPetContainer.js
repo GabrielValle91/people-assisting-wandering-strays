@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider, Card } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getFoundPets } from '../actions/FoundPets';
+import FoundPets from '../components/foundPets/FoundPets';
 
 class FoundPetContainer extends Component {
 
@@ -22,24 +23,7 @@ class FoundPetContainer extends Component {
       <Divider hidden section />
       {foundPets && foundPets.length ?
         <Card.Group>
-        {Object.keys(foundPets).map((key) => {
-          return (
-            <Card>
-              <Card.Content>
-                <Card.Header>Found {foundPets[key].animal_type}</Card.Header>
-                <Card.Meta>{foundPets[key].city}, {foundPets[key].state}</Card.Meta>
-                <Card.Description>
-                  Reported {foundPets[key].created_at}
-                </Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                <Button>
-                  More info
-                </Button>
-              </Card.Content>
-            </Card>
-          )
-        })}
+          <FoundPets foundPets={this.props.foundPets}/>
         </Card.Group>
         : <Container textAlign='center'>No found pets.</Container>
       }
