@@ -7,6 +7,7 @@ class FoundPetsController < ApiController
 
   def show
     @found_pet = FoundPet.find(params[:id])
-    render json: @found_pet.to_json
+    # raise @found_pet.inspect
+    render json: @found_pet
   end
 end

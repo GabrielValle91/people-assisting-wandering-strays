@@ -20,6 +20,8 @@ gem 'puma', '~> 3.11'
 gem 'devise'
 gem 'activeadmin'
 
+gem 'active_model_serializers'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

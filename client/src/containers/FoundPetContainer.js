@@ -15,9 +15,9 @@ class FoundPetContainer extends Component {
     return (foundPets ? 
       <Container text>
       <Header as='h2' icon textAlign='center' color='teal'>
-        <Icon name='unordered list' circular />
+        <Icon name='paw' circular />
         <Header.Content>
-          List of Found Pets
+          Found Pets
         </Header.Content>
       </Header>
       <Divider hidden section />
