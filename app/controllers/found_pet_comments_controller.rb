@@ -1,2 +1,2 @@
-class FoundPetCommentsController < ApplicationController
+class FoundPetCommentsController < ApiController
 end

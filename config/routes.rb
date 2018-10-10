@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :found_pet_comments
-  resources :found_pets
+  scope '/api' do
+    resources :found_pet_comments
+    resources :found_pets
+  end
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
