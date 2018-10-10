@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card } from 'semantic-ui-react';
+import { Button, Card, Header, Modal } from 'semantic-ui-react';
 
 class FoundPet extends Component{
   dateCreator = dateValue => {
@@ -18,9 +18,17 @@ class FoundPet extends Component{
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Button>
-            More info
-          </Button>
+          <Modal trigger={<Button>More info</Button>}>
+            <Modal.Header>Found {foundPet.animal_type}</Modal.Header>
+            <Modal.Content text>
+              <Modal.Description>
+                <Header>{foundPet.city}, {foundPet.state}</Header>
+                <p>Area found: {foundPet.area}</p>
+                <p>Gender: {foundPet.gender}</p>
+                <p>Status: {foundPet.status}</p>
+              </Modal.Description>
+            </Modal.Content>
+          </Modal>
         </Card.Content>
       </Card>
     )

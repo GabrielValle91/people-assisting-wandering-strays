@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import FoundPet from './FoundPet';
 
-
 const FoundPets = ({foundPets}) => {
   const foundPetList = foundPets.map(foundPet => {
     return (
