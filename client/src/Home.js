@@ -3,7 +3,11 @@ import './App.css';
 
 class Home extends Component {
   render(){
-    return (<div>Home Page</div>)
+    return (
+      <div className="homePage">
+        <p className="homePageHeader">Welcome to <strong>PAWS</strong></p>
+      </div>
+    )
   }
 }
 

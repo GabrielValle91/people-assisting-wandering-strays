@@ -26,3 +26,17 @@ code {
 .aboutPage {
   margin: 5px;
 }
+
+.homePage {
+  background: url(https://7gigzxopz0uiqxo1-zippykid.netdna-ssl.com/wp-content/uploads/2014/02/Flickr_-_ggallice_-_Street_dogs_1.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  height: 100vw;
+  background-size: cover;
+}
+
+.homePageHeader {
+  text-align: center;
+  font-size: 5em;
+}

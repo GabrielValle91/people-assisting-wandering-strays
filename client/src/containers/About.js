@@ -2,7 +2,6 @@ import React from 'react';
 const About = () => {
   return( 
    <div className="aboutPage">
-     About Us
       <ul>
         <p className="AboutHeader"><strong>P</strong>eople <strong>A</strong>ssisting <strong>W</strong>andering <strong>S</strong>trays</p>
       </ul>
