@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import NotFound from './NotFound';
+import { connect } from 'react-redux';
 
 class App extends Component {
   render () {
