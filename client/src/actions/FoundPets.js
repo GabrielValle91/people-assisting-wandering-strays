@@ -1,3 +1,4 @@
+import { resetFoundPetForm } from './FoundPetForm';
 // Action Creators
 const setFoundPets = foundPets => {
   return {
@@ -57,23 +58,33 @@ export const getFoundPetComments = (petId) => {
   }
 }
 
-// export const createFoundPet = foundPet => {
-//   return dispatch => {
-//     return fetch(`/api/found_pets`, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({found_pet: foundPet})
-//     })
-//       .then(response => response.json())
-//       .then(foundPet => {
-//         dispatch(addFoundPet(foundPet))
-//         dispatch(resetFoundPetForm())
-//       })
-//       .catch(error => console.log(error))
-//   }
-// }
+export const createFoundPet = foundPet => {
+  return dispatch => {
+    
+    var data = new FormData();
+    data.append("found_pet[animal_type]", foundPet["animal_type"]);
+    data.append("found_pet[gender]", foundPet["gender"]);
+    data.append("found_pet[city]", foundPet["city"]);
+    data.append("found_pet[state]", foundPet["state"]);
+    data.append("found_pet[area]", foundPet["area"]);
+    data.append("found_pet[user_id]", foundPet["user_id"]);
+    data.append("found_pet[pet_image]", foundPet["pet_image"], foundPet["pet_image"].name);
+    
+    return fetch(`/api/found_pets`, {
+      method: 'POST',
+      // headers: {
+      //   'Content-Type': 'application/json'
+      // },
+      body: data
+    })
+      .then(response => response.json())
+      .then(foundPet => {
+        dispatch(addFoundPet(foundPet))
+        dispatch(resetFoundPetForm())
+      })
+      .catch(error => console.log(error))
+  }
+}
 
 export const createFoundPetComment = foundPetComment => {
   return dispatch => {

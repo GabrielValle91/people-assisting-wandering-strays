@@ -22,6 +22,12 @@ gem 'activeadmin'
 
 gem 'active_model_serializers'
 
+gem 'paperclip'
+gem 'aws-sdk', '~> 3.0' 
+gem 'aws-sdk-s3'
+
+gem 'rack-cors', require: 'rack/cors'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

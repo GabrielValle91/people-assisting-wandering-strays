@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_09_172516) do
+ActiveRecord::Schema.define(version: 2018_10_12_220659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,10 @@ ActiveRecord::Schema.define(version: 2018_10_09_172516) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pet_image_file_name"
+    t.string "pet_image_content_type"
+    t.bigint "pet_image_file_size"
+    t.datetime "pet_image_updated_at"
     t.index ["user_id"], name: "index_found_pets_on_user_id"
   end
 

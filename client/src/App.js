@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import NotFound from './NotFound';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import Navigation from './containers/Navigation';
 import FoundPetContainer from './containers/FoundPetContainer';
 import About from './containers/About';

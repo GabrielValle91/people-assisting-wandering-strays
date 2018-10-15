@@ -13,7 +13,7 @@ class FoundPetComments extends Component {
   handleChange = event => {
     const {name, value} = event.target;
     const currentFoundPetComment = Object.assign({},this.props.foundPetComment, {
-      user_id: 0,
+      user_id: 1,
       [name]: value,
       found_pet_id: this.props.petId
     })
@@ -26,14 +26,14 @@ class FoundPetComments extends Component {
 
   render() {
     const comment = this.props.foundPetComment.comment;
-    const commentList = this.props.foundPetComments.map(comment => {
+    const commentList = this.props.foundPetComments ? this.props.foundPetComments.map(comment => {
       return(
         <p key={comment.id}>{comment.user.username} says: {comment.comment}</p>
       )
-    })
+    }) : ''
     return (
       <div>
-        {commentList}
+        {commentList ? commentList : ''}
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="comment" value={comment} onChange={this.handleChange}/>
           <button type="submit">Add Comment</button>
