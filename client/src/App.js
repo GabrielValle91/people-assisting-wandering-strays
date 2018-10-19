@@ -18,9 +18,9 @@ class App extends Component {
       <Router>
         <React.Fragment>
           <Switch>
-            <Route path='/home' exact component={Home} />
-            <Route exact path="/login" render={()=> (this.props.userDetails.id ? <Redirect to="/home"/> : <LogIn/>)} />
-            <Route exact path="/signup" render={()=> (this.props.userDetails.id ? <Redirect to="/home"/> : <SignUp/>)} />
+            <Route path='/' exact component={Home} />
+            <Route exact path="/login" render={()=> (this.props.userDetails.id ? <Redirect to="/"/> : <LogIn/>)} />
+            <Route exact path="/signup" render={()=> (this.props.userDetails.id ? <Redirect to="/"/> : <SignUp/>)} />
             <Route exact path="/logout" render={()=> (this.props.userDetails.id ? <LogOut/> : <Redirect to="/login"/>)} />
             <Route exact path="/found_pets"  render={() => (this.props.userDetails.id ? <FoundPetContainer/> : <Redirect to="/login" />)} />
             <Route exact path="/about" component={About} />

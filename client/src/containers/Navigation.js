@@ -21,7 +21,7 @@ class Navigation extends Component {
         <Segment inverted>
           <Menu inverted pointing secondary>
             <Menu.Item header>PAWS</Menu.Item>
-            <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick}><NavLink to='/home' exact>Home</NavLink></Menu.Item>
+            <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick}><NavLink to='/' exact>Home</NavLink></Menu.Item>
             <Menu.Item name='foundPets' active={activeItem === 'foundPets'} onClick={this.handleItemClick}><NavLink to="/found_pets" exact>Found Pets</NavLink></Menu.Item>
             <Menu.Item name='lostPets' active={activeItem === 'lostPets'} onClick={this.handleItemClick}><NavLink to="/lost_pets" exact>Lost Pets</NavLink></Menu.Item>
             <Menu.Item name='aboutUs' active={activeItem === 'aboutUs'} onClick={this.handleItemClick}><NavLink to="/about" exact>About Us</NavLink></Menu.Item>
@@ -33,7 +33,7 @@ class Navigation extends Component {
         <Segment inverted>
           <Menu inverted pointing secondary>
             <Menu.Item header>PAWS</Menu.Item>
-            <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick}><NavLink to='/home' exact>Home</NavLink></Menu.Item>
+            <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick}><NavLink to='/' exact>Home</NavLink></Menu.Item>
             <Menu.Item name='aboutUs' active={activeItem === 'aboutUs'} onClick={this.handleItemClick}><NavLink to="/about" exact>About Us</NavLink></Menu.Item>
             <Menu.Item name='login' active={activeItem === 'login'} onClick={this.handleItemClick}><NavLink to='login' exact>Log In</NavLink></Menu.Item>
             <Menu.Item name='signup' active={activeItem === 'signup'} onClick={this.handleItemClick}><NavLink to='/signup' exact>Sign Up</NavLink></Menu.Item>
