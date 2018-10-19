@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Home from './Home';
 import NotFound from './NotFound';
-// import { connect } from 'react-redux';
-import Navigation from './containers/Navigation';
+import { connect } from 'react-redux';
 import FoundPetContainer from './containers/FoundPetContainer';
 import About from './containers/About';
+import LogOut from './containers/LogOut';
+import LogIn from './containers/LogIn';
+import SignUp from './containers/SignUp';
 
 class App extends Component {
+  componentDidMount(){
+    document.title = "PAWS"
+  }
   render() {
     return (
       <Router>
         <React.Fragment>
-          <Navigation />
           <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/found_pets' exact component={FoundPetContainer} />
-            <Route path='/about' exact component={About} />
+            <Route path='/home' exact component={Home} />
+            <Route exact path="/login" render={()=> (this.props.userDetails.id ? <Redirect to="/home"/> : <LogIn/>)} />
+            <Route exact path="/signup" render={()=> (this.props.userDetails.id ? <Redirect to="/home"/> : <SignUp/>)} />
+            <Route exact path="/logout" render={()=> (this.props.userDetails.id ? <LogOut/> : <Redirect to="/login"/>)} />
+            <Route exact path="/found_pets"  render={() => (this.props.userDetails.id ? <FoundPetContainer/> : <Redirect to="/login" />)} />
+            <Route exact path="/about" component={About} />
             <Route component={NotFound} />
           </Switch>
         </React.Fragment>
@@ -25,4 +32,10 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = state => {
+  return({
+    userDetails: state.userAuthentication
+  })
+}
+
+export default connect(mapStateToProps)(App)

@@ -13,7 +13,7 @@ class FoundPetComments extends Component {
   handleChange = event => {
     const {name, value} = event.target;
     const currentFoundPetComment = Object.assign({},this.props.foundPetComment, {
-      user_id: 1,
+      user_id: this.props.userId,
       [name]: value,
       found_pet_id: this.props.petId
     })
@@ -47,7 +47,7 @@ const mapStateToProps = state => {
   return {
     foundPetComment: state.foundPetComment,
     foundPetComments: state.foundPetComments,
-    // userId: state.userAuthentication.id
+    userId: state.userAuthentication.id
   }
 }
 

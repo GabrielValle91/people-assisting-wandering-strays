@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Header, Icon, Dimmer, Loader, Divider, Card } from 'semantic-ui-react';
+import { Container, Header, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getFoundPets } from '../actions/FoundPets';
 import FoundPets from '../components/foundPets/FoundPets';
 import FoundPetInput from '../components/foundPets/FoundPetInput';
+import Navigation from './Navigation';
 
 class FoundPetContainer extends Component {
 
@@ -14,6 +15,8 @@ class FoundPetContainer extends Component {
   render() {
     let {foundPets} = this.props;
     return (foundPets ? 
+      <React.Fragment>
+      <Navigation activeItem={'foundPets'}/>
       <Container>
         <Header as='h2' icon textAlign='center' color='teal'>
           <Icon name='paw' circular />
@@ -29,6 +32,7 @@ class FoundPetContainer extends Component {
         }
         <Divider section />
       </Container>
+      </React.Fragment>
       : <Container>
         <Dimmer active inverted>
           <Loader content='Loading' />
