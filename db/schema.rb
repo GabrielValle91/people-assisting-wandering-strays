@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_12_220659) do
+ActiveRecord::Schema.define(version: 2018_10_22_161055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,41 @@ ActiveRecord::Schema.define(version: 2018_10_12_220659) do
     t.index ["user_id"], name: "index_found_pets_on_user_id"
   end
 
+  create_table "jwt_blacklist", force: :cascade do |t|
+    t.string "jti", null: false
+    t.index ["jti"], name: "index_jwt_blacklist_on_jti"
+  end
+
+  create_table "lost_pet_comments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "lost_pet_id"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lost_pet_id"], name: "index_lost_pet_comments_on_lost_pet_id"
+    t.index ["user_id"], name: "index_lost_pet_comments_on_user_id"
+  end
+
+  create_table "lost_pets", force: :cascade do |t|
+    t.string "animal_type"
+    t.string "name"
+    t.string "gender"
+    t.string "breed"
+    t.string "city"
+    t.string "state"
+    t.string "personality"
+    t.boolean "chipped", default: false
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "pet_image_file_name"
+    t.string "pet_image_content_type"
+    t.bigint "pet_image_file_size"
+    t.datetime "pet_image_updated_at"
+    t.index ["user_id"], name: "index_lost_pets_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "username", default: "", null: false
@@ -84,4 +119,7 @@ ActiveRecord::Schema.define(version: 2018_10_12_220659) do
   add_foreign_key "found_pet_comments", "found_pets"
   add_foreign_key "found_pet_comments", "users"
   add_foreign_key "found_pets", "users"
+  add_foreign_key "lost_pet_comments", "lost_pets"
+  add_foreign_key "lost_pet_comments", "users"
+  add_foreign_key "lost_pets", "users"
 end
