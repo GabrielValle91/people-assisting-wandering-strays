@@ -1,5 +1,5 @@
-ActiveAdmin.register FoundPet do
-  permit_params :animal_type, :city, :state, :area, :gender, :status, :user_id, :found_pet_comments, :pet_image
+ActiveAdmin.register LostPet do
+  permit_params :animal_type, :name, :gender, :breed, :city, :state, :personality, :chipped, :status, :user_id, :lost_pet_comments, :pet_image
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

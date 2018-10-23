@@ -88,7 +88,7 @@ export const createFoundPet = foundPet => {
 
 export const createFoundPetComment = foundPetComment => {
   return dispatch => {
-    return fetch(`/api/found_pet_comments`, {
+    return fetch('/api/found_pet_comments', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
