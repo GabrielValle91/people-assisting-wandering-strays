@@ -11,9 +11,6 @@ import LogIn from './containers/LogIn';
 import SignUp from './containers/SignUp';
 
 class App extends Component {
-  componentDidMount(){
-    document.title = "PAWS"
-  }
   render() {
     return (
       <Router>

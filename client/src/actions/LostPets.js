@@ -89,6 +89,18 @@ export const createLostPet = lostPet => {
   }
 }
 
+export const updateLostPet = lostPet => {
+  return dispatch => {
+    return fetch(`/api/lost_pets/${lostPet.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({lost_pet: lostPet})
+    })
+  }
+}
+
 export const createLostPetComment = lostPetComment => {
   return dispatch => {
     return fetch('/api/lost_pet_comments', {

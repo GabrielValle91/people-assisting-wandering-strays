@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Card, Header, Modal, Divider, Image } from 'semantic-ui-react';
 import FoundPetComments from './FoundPetComments';
+import { connect } from 'react-redux';
+import { updateFoundPet } from '../../actions/FoundPets';
 
 class FoundPet extends Component{
   dateCreator = dateValue => {
@@ -8,8 +10,17 @@ class FoundPet extends Component{
     return formattedDate;
   }
 
+  handleChange = (e) => {
+    const currentFoundPet = {
+      id: this.props.foundPet.id,
+      status: e.target.value
+    }
+    this.props.updateFoundPet(currentFoundPet);
+  }
+
   render(){
     const {foundPet} = this.props;
+    const foundPetStatus = <select onChange={this.handleChange} value={this.props.foundPet.status}><option value="Open">Open</option><option value="At Shelter">At Shelter</option><option value="Found Home">Found Home</option></select>
     return (
       <Card>
         <Card.Content>
@@ -30,7 +41,7 @@ class FoundPet extends Component{
                 <Image src={foundPet.pet_image} />
                 <p>Area found: {foundPet.area}</p>
                 <p>Gender: {foundPet.gender}</p>
-                <p>Status: {foundPet.status}</p>
+                {foundPet.user_id == this.props.userDetails.id ? <p>Status: {foundPetStatus}</p> : <p>Status: {foundPet.status}</p>}
                 <Divider section />
                 <FoundPetComments petId={foundPet.id}/>
               </Modal.Description>
@@ -42,4 +53,10 @@ class FoundPet extends Component{
   }
 }
 
-export default FoundPet;
+const mapStateToProps = state => {
+  return({
+    userDetails: state.userAuthentication
+  })
+}
+
+export default connect(mapStateToProps, {updateFoundPet})(FoundPet);

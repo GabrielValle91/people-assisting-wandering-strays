@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Card, Header, Modal, Divider, Image } from 'semantic-ui-react';
 import LostPetComments from './LostPetComments';
+import { connect } from 'react-redux';
+import { updateLostPet } from '../../actions/LostPets';
 
 class LostPet extends Component{
   dateCreator = dateValue => {
@@ -8,8 +10,17 @@ class LostPet extends Component{
     return formattedDate;
   }
 
+  handleChange = (e) => {
+    const currentLostPet = {
+      id: this.props.lostPet.id,
+      status: e.target.value
+    }
+    this.props.updateLostPet(currentLostPet);
+  }
+
   render(){
     const {lostPet} = this.props;
+    const lostPetStatus = <select onChange={this.handleChange} value={this.props.lostPet.status}><option value="Open">Open</option><option value="Found Home">Found Home</option></select>
     return (
       <Card>
         <Card.Content>
@@ -32,7 +43,7 @@ class LostPet extends Component{
                 <p>Gender: {lostPet.gender}</p>
                 <p>Breed: {lostPet.breed}</p>
                 <p>Chipped?: {lostPet.chipped ? 'Yes' : 'No'}</p>
-                <p>Status: {lostPet.status}</p>
+                {lostPet.user_id == this.props.userDetails.id ? <p>Status: {lostPetStatus}</p> : <p>Status: {lostPet.status}</p>}
                 <Divider section />
                 <LostPetComments petId={lostPet.id}/>
               </Modal.Description>
@@ -44,4 +55,10 @@ class LostPet extends Component{
   }
 }
 
-export default LostPet;
+const mapStateToProps = state => {
+  return({
+    userDetails: state.userAuthentication
+  })
+}
+
+export default connect(mapStateToProps, {updateLostPet})(LostPet);

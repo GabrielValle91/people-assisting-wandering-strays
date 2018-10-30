@@ -86,6 +86,18 @@ export const createFoundPet = foundPet => {
   }
 }
 
+export const updateFoundPet = foundPet => {
+  return dispatch => {
+    return fetch(`/api/found_pets/${foundPet.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({found_pet: foundPet})
+    })
+  }
+}
+
 export const createFoundPetComment = foundPetComment => {
   return dispatch => {
     return fetch('/api/found_pet_comments', {
