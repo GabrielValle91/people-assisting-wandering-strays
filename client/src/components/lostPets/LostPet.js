@@ -5,12 +5,26 @@ import { connect } from 'react-redux';
 import { updateLostPet } from '../../actions/LostPets';
 
 class LostPet extends Component{
+  constructor(){
+    super();
+    this.state={}
+  }
+
+  componentDidMount = () => {
+    this.setState({
+      status: this.props.lostPet.status
+    })
+  }
+
   dateCreator = dateValue => {
     let formattedDate = new Date(dateValue).toLocaleString("en-US");
     return formattedDate;
   }
 
   handleChange = (e) => {
+    this.setState({
+      status: e.target.value
+    })
     const currentLostPet = {
       id: this.props.lostPet.id,
       status: e.target.value
@@ -20,7 +34,7 @@ class LostPet extends Component{
 
   render(){
     const {lostPet} = this.props;
-    const lostPetStatus = <select onChange={this.handleChange} value={this.props.lostPet.status}><option value="Open">Open</option><option value="Found Home">Found Home</option></select>
+    const lostPetStatus = <select onChange={this.handleChange} value={this.state.status}><option value="Open">Open</option><option value="Found Home">Found Home</option></select>
     return (
       <Card>
         <Card.Content>

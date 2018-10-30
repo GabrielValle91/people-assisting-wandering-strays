@@ -7,13 +7,40 @@ import LostPetInput from '../components/lostPets/LostPetInput';
 import Navigation from './Navigation';
 
 class LostPetContainer extends Component {
+  constructor(props){
+    super(props);
+    this.state={};
+  }
 
   componentDidMount() {
+    this.setState({
+      statusFilter: "Open"
+    })
     this.props.getLostPets();
+  }
+
+  handleChange = e => {
+    this.setState({
+      statusFilter: e.target.value
+    })
+  }
+
+  handleStatusFilter = (lostPets, statusFilter) => {
+    let newLostPets = []
+    for (let i = 0; i < lostPets.length; i++){
+      if(lostPets[i].status == statusFilter){
+        newLostPets = [...newLostPets, lostPets[i]]
+      } 
+    }
+    this.setState({
+      filteredLostPets: newLostPets
+    })
   }
 
   render() {
     let {lostPets} = this.props;
+    const lostPetStatusFilter = <div>Filter Lost Pets by Status: <select value={this.state.statusFilter} onChange={this.handleChange}><option value="Open">Open</option><option value="Found Home">Found Home</option></select><button onClick={() => this.handleStatusFilter(lostPets, this.state.statusFilter)}>Filter</button></div>
+    
     return (lostPets ? 
       <React.Fragment>
       <Navigation activeItem={'lostPets'}/>
@@ -26,7 +53,8 @@ class LostPetContainer extends Component {
         </Header>
         <LostPetInput />
         <Divider hidden section />
-        {lostPets && lostPets.length ?
+        { lostPetStatusFilter }
+        {this.state.filteredLostPets ? <LostPets lostPets={this.state.filteredLostPets} /> : lostPets && lostPets.length ?
           <LostPets lostPets={lostPets} />
           : <Container textAlign='center'>No lost pets.</Container>
         }
