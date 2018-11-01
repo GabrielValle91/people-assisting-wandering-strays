@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :found_pets
   has_many :found_pet_comments
+  has_many :lost_pets
+  has_many :lost_pet_commentss
 end
