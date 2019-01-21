@@ -24,6 +24,14 @@ class LogIn extends Component {
     this.props.userLogin(this.state);
   }
 
+  guestLogin = () => {
+    const guest = {
+      username: 'anonymous',
+      password: 'testpass'
+    }
+    this.props.userLogin(guest);
+  }
+
   render(){
     return(
       <div>
@@ -38,6 +46,7 @@ class LogIn extends Component {
           <br />
           <button type="submit">Login</button>
         </form>
+        <button onClick={this.guestLogin}>Login as guest</button>
       </div>
     )
   }
